@@ -1,0 +1,52 @@
+"Games"
+{
+    "csgo"
+    {
+        "Functions"
+        {
+            "CBaseClient::CLCMsg_ListenEvents"
+            {
+                "signature" "CBaseClient::CLCMsg_ListenEvents"
+                "callconv" "thiscall"
+                "return" "bool"
+                "this" "address"
+                "arguments"
+                {
+                    "msg"
+                    {
+                        "type" "objectptr"
+                    }
+                }
+            }
+        }
+		
+		"Keys"
+        {
+            "GameEventManagerInterface" "GAMEEVENTSMANAGER002"
+        }
+    
+        "Signatures"
+        {
+			"CreateInterface"
+            {
+                "library" "engine"
+                "windows" "@CreateInterface"
+                "linux" "@CreateInterface"
+            }
+		
+			"CGameEventManager::GetEventDescriptor"
+            {
+                "library" "engine"
+                "windows" "\x55\x8B\xEC\x8B\x55\x08\x8B\xC1\x85\xD2\x79\x2A"
+                "linux" "\x55\x31\xC0\x89\xE5\x56\x53\x8B\x5D\x0C\x8B\x55\x08"
+            }
+		
+            "CBaseClient::CLCMsg_ListenEvents"
+            {
+                "library" "engine"
+                "windows" "\x55\x8B\xEC\x83\xE4\xF8\x83\xEC\x48\x56\x57\xC7\x44\x24\x0C\x00\x00\x00\x00"
+                "linux" "\x55\x89\xE5\x57\x56\x8D\x7D\xA8\x53\x83\xEC\x6C"
+            }
+        }
+    }
+}
