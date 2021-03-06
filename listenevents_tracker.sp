@@ -76,12 +76,12 @@ public MRESReturn Detour_CLCMsg_ListenEvents(Address thisPtr, Handle retn, Handl
     
     int event_mask_size = DHookGetParamObjectPtrVar(params, 1, 0x0C, ObjectValueType_Int);
     Address event_mask_ptr = DHookGetParamObjectPtrVar(params, 1, 0x08, ObjectValueType_Int);
-    int event_arr[16];
+    int event_mask[16];
     
     for (int i = 0; i < event_mask_size && i < 16; i++)
-        event_arr[i] = LoadFromAddress(event_mask_ptr + view_as<Address>(i * 0x04), NumberType_Int32);
+        event_mask[i] = LoadFromAddress(event_mask_ptr + view_as<Address>(i * 0x04), NumberType_Int32);
     
-    int index = BitVec512_FindNextSetBit(event_arr, 0);
+    int index = BitVec512_FindNextSetBit(event_mask, 0);
     
     while (index >= 0)
     {
@@ -99,7 +99,7 @@ public MRESReturn Detour_CLCMsg_ListenEvents(Address thisPtr, Handle retn, Handl
             LogMessage("%i: unknown", index);
         }
 
-        index = BitVec512_FindNextSetBit(event_arr, index + 1);
+        index = BitVec512_FindNextSetBit(event_mask, index + 1);
     }
     
     return MRES_Ignored;
